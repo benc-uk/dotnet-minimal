@@ -1,0 +1,41 @@
+@page
+@{
+  ViewData["Title"] = "Books";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>This pages calls the API <a target="_blank" href="/api/books">/api/books</a> using JS and fetch(), then
+  dynamically displays the results</p>
+
+<div id="books">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Published Date</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  window.onload = () =>
+    fetch('/api/books')
+      .then(response => response.json())
+      .then(data => {
+        const books = data;
+        const table = document.querySelector('#books table tbody');
+        books.forEach(book => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+          <td>${book.title}</td>
+          <td>${book.author}</td>
+          <td>${new Date(book.published).getFullYear()}</td>
+        `;
+          table.appendChild(row);
+        });
+      });
+</script>

@@ -11,7 +11,7 @@
     "Domain": "__CHANGEME__.onmicrosoft.com",
     "ClientId": "__CHANGEME__",
     "ClientSecret": "__CHANGEME__",
-    "TenantId": "common",
+    "TenantId": "__CHANGEME__",
     "CallbackPath": "/signin-oidc"
   },
   "Graph": {

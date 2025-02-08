@@ -1,0 +1,10 @@
+# C# files
+[*.cs]
+
+# Make C# look slightly less ugly & awful
+indent_size = 2
+indent_style = space
+tab_width = 2
+csharp_new_line_before_catch = false
+csharp_new_line_before_else = false
+csharp_new_line_before_open_brace = false
