@@ -13,6 +13,7 @@ var app = builder.Build();
 app.UseStaticFiles();
 app.UseAuthorization();
 app.MapRazorPages();
+app.Urls.Add("http://0.0.0.0:5000");
 
 BookAPI.AddRoutes(app); // A simple REST API for books
 

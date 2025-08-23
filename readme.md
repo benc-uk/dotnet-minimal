@@ -33,11 +33,11 @@ app.Run();
 - .NET 8 - https://dotnet.microsoft.com/download/dotnet/8.0
 - A registered app in Entra ID with a secret - https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app
   - Add a "web application" for signin
-  - Set the redirect URL to be `http://localhost:5001/signin-oidc`
+  - Set the redirect URL to be `http://localhost:5000/signin-oidc`
 
 # Quick Start
 
 - Copy `appsettings.Development.json.sample` to `appsettings.Development.json` and update any references to `__CHANGEME__` in the file.
 - Run `dotnet watch` or `dotnet run`
-- Go to http://localhost:5001
+- Go to http://localhost:5000
 - Click on "Account" to sign-in and have various details about the user shown

@@ -6,7 +6,7 @@ using Microsoft.Graph;
 
 [Authorize]
 public class AccountModel : PageModel {
-  private readonly GraphServiceClient _graphServiceClient;
+  private readonly GraphServiceClient _graph;
 
   public string username { get; private set; } = "unknown";
   public string preferredUsername { get; private set; } = "";
@@ -14,8 +14,8 @@ public class AccountModel : PageModel {
   public string oid { get; private set; } = "";
   public Dictionary<string, string> graphData = new Dictionary<string, string>();
 
-  public AccountModel(ILogger<AccountModel> logger, GraphServiceClient graphServiceClient) {
-    _graphServiceClient = graphServiceClient;
+  public AccountModel(GraphServiceClient graphServiceClient) {
+    _graph = graphServiceClient;
   }
 
   public async Task<IActionResult> OnGet() {
@@ -31,10 +31,9 @@ public class AccountModel : PageModel {
     }
 
     try {
-      // Fetch user details from Graph API
-      var graphDetails = await _graphServiceClient.Me
-      .Request()
-      .GetAsync();
+      // Fetch user details from Graph API using the /me endpoint
+      // See: https://learn.microsoft.com/en-us/graph/api/user-get
+      var graphDetails = await _graph.Me.Request().GetAsync();
 
       graphData.Add("UPN", graphDetails.UserPrincipalName);
       graphData.Add("Given Name", graphDetails.GivenName);
