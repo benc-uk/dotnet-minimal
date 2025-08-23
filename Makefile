@@ -1,6 +1,5 @@
 # Makefile for dotnet-minimal — basic development tasks
 
-SOLUTION ?= minimal.sln
 PROJECT ?= minimal.csproj
 CONFIG ?= Debug
 DOTNET ?= dotnet
@@ -14,10 +13,10 @@ help: ## Show this help
 all: build ## Build the project (default)
 
 restore: ## Restore NuGet packages for the solution
-	$(DOTNET) restore $(SOLUTION)
+	$(DOTNET) restore $(PROJECT)
 
 build: restore ## Build the solution
-	$(DOTNET) build $(SOLUTION) -c $(CONFIG) --no-restore
+	$(DOTNET) build -c $(CONFIG) --no-restore $(PROJECT)
 
 publish: ## Publish the project as a self-contained app
 	$(DOTNET) publish $(PROJECT) -c $(CONFIG) -o dist/
@@ -29,16 +28,16 @@ watch: ## Run the app with dotnet watch
 	$(DOTNET) watch --project $(PROJECT) run --configuration $(CONFIG)
 
 clean: ## Clean build artifacts
-	$(DOTNET) clean $(SOLUTION)
+	$(DOTNET) clean
 	rm -rf bin/ obj/ dist/
 
 lint: ## Verify & lint code 
 	@echo "Running analyzer & format check..."
-	dotnet format --verify-no-changes $(SOLUTION)
+	dotnet format --verify-no-changes $(PROJECT)
 
 lint-fix: ## Fix code format issues
 	@echo "Formatting solution..."
-	dotnet format $(SOLUTION)
+	dotnet format $(PROJECT)
 
 image: ## Build container image
 	docker build -t $(IMAGE_REF) .
