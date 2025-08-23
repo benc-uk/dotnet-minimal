@@ -12,31 +12,31 @@
 <table class="table table-hover table-striped">
   <tr>
     <td>Name:</td>
-    <td>@Model.name</td>
+    <td>@Model.Name</td>
   </tr>
   <tr>
     <td>Username:</td>
-    <td>@Model.username</td>
+    <td>@Model.Username</td>
   </tr>
   <tr>
     <td>OID:</td>
-    <td>@Model.oid</td>
+    <td>@Model.OID</td>
   </tr>
 </table>
 
-@if (Model.graphData != null)
+@if (Model.GraphData != null)
 {
   <hr>
   <h3 class="card-title">🔍 Microsoft Graph</h3>
   <p class="card-text">
   <table class="table table-hover table-striped">
-  @foreach (KeyValuePair<string, string> kvp in Model.graphData)
-      {
+    @foreach (KeyValuePair<string, string> kvp in Model.GraphData)
+    {
       <tr>
         <td>@kvp.Key:</td>
         <td>@kvp.Value</td>
       </tr>
-      }
+    }
   </table>
   </p>
 }

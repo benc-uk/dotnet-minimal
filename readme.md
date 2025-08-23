@@ -38,6 +38,6 @@ app.Run();
 # Quick Start
 
 - Copy `appsettings.Development.json.sample` to `appsettings.Development.json` and update any references to `__CHANGEME__` in the file.
-- Run `dotnet watch` or `dotnet run`
+- Run `make run` to start the app
 - Go to http://localhost:5000
 - Click on "Account" to sign-in and have various details about the user shown

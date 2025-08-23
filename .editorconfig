@@ -8,3 +8,32 @@ tab_width = 2
 csharp_new_line_before_catch = false
 csharp_new_line_before_else = false
 csharp_new_line_before_open_brace = false
+
+########################################
+# Enable analyzer rules sets           #
+# - Switch on everything by default    #
+########################################
+dotnet_analyzer_diagnostic.category-Design.severity = error
+dotnet_analyzer_diagnostic.category-Documentation.severity = error
+dotnet_analyzer_diagnostic.category-Globalization.severity = none
+dotnet_analyzer_diagnostic.category-Interoperability.severity = error
+dotnet_analyzer_diagnostic.category-Maintainability.severity = error
+dotnet_analyzer_diagnostic.category-Naming.severity = error
+dotnet_analyzer_diagnostic.category-Performance.severity = error
+dotnet_analyzer_diagnostic.category-SingleFile.severity = error
+dotnet_analyzer_diagnostic.category-Reliability.severity = error
+dotnet_analyzer_diagnostic.category-Security.severity = error
+dotnet_analyzer_diagnostic.category-Style.severity = warning
+dotnet_analyzer_diagnostic.category-Usage.severity = error
+dotnet_analyzer_diagnostic.category-CodeQuality.severity = error
+
+# This rule often clashes with CA1707 (no underscores)
+dotnet_diagnostic.IDE0130.severity = none
+
+# CA1050: Declare types in namespaces, doesn't make sense for minimal APIs
+dotnet_diagnostic.CA1050.severity = none
+
+# Use 'var' 
+csharp_style_var_when_type_is_apparent = true:error
+csharp_style_var_for_built_in_types = true:error
+csharp_style_var_elsewhere = true:error
